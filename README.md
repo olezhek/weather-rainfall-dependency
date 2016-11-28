@@ -1,6 +1,6 @@
 # weather-rainfall-dependency
 
-Simple React-based application to demonstrate ingetration of various components and their states
+Simple React-based application to demonstrate integration of various components and their states
 
 # Installation
 
