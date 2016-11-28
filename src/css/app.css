@@ -1,0 +1,15 @@
+ .container {
+     width: calc(50% - 100px);
+     margin-top: 50px;
+ } 
+
+ .container.left {
+     float: left;
+     margin-left: 50px;
+ }
+
+ .container.right {
+     float: right;
+     margin-right: 50px;
+ }
+ 
