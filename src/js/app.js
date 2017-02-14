@@ -5,6 +5,7 @@ import { chanceOfRain } from './Tools/misc';
 import Slider from './Components/Slider';
 import Block from './Components/Block';
 import { Chart } from 'react-google-charts';
+import Config from './config';
 
 import '../css/app.css';
 
@@ -21,14 +22,15 @@ class App extends React.Component {
             currentPressure: 1010
         }
         Storage.subWeatherForecast(this.setData.bind(this));
-        Storage.getWeatherForecast();
+
+        let dataSourceConfig = Config.offlineMode ? 'local' : 'remote';
+        Storage.getWeatherForecast(Config.dataSource[dataSourceConfig].url);
     }
 
     setData(data) {
         let barChartData = this.parseBarChartData(data);
         
         let lineChartData = this.calculateLineChartData(data, this.state.currentPressure, this.state.currentTemperature);
-        console.log(lineChartData);
         this.setState({
             data,
             barChartData,

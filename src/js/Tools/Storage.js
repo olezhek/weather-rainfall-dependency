@@ -1,12 +1,11 @@
 import { getData } from './Networking';
-import Config from '../Config';
 
 export default class Storage {
 
     static handlers = {};
 
-    static getWeatherForecast () {
-        return getData(Config.dataSource.url)
+    static getWeatherForecast (url) {
+		return getData(url)
         .then(content => {
             let data = (JSON.parse(content))[0];
             this.fireHandlers('weather_forecast', data);
@@ -36,6 +35,5 @@ export default class Storage {
         } catch (e) {
             console.warn(`Failed to trigger handlers for ${on}`, e);
         }
-        
     }
 }
